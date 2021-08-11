@@ -1,0 +1,38 @@
+<h1>YouTube Videos</h1>
+<div fxLayout="row warp" fxLayoutGap="16px grid">
+  <div
+    fxFlex="25%"
+    fxFlex.xs="100%"
+    fxFlex.sm="33%"
+    *ngFor="let video of videos"
+  >
+    <mat-card>
+      <img
+        mat-card-image
+        [src]="video.thumbnails.high.url"
+        [alt]="video.title"
+      />
+      <mat-card-content>
+        <mat-card-title>{{ video.title }}</mat-card-title>
+        <span>
+          Autor: <strong>{{ video.channelTitle }}</strong>
+        </span>
+        <p>
+          Publicado: <strong>{{ video.publishedAt | date }}</strong>
+        </p>
+      </mat-card-content>
+      <mat-card-actions class="m-0">
+        <button mat-stroked-button color="primary" class="full-width" (click)="showVideo(video)">
+          Ver video
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
+<div fxLayout="row" fxLayoutAlign="center">
+  <div fxFlex.xs="100%" fxFlex="50%" class="py-2">
+    <button mat-raised-button color="primary" class="full-width" (click)="getVideos()">
+      Cargar mas
+    </button>
+  </div>
+</div>
